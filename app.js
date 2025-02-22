@@ -10,6 +10,9 @@ let boardWidth = 650;
 let boardHeight = 650;
 
 // paddle
+let paddleImg = new Image();
+paddleImg.src = "assets/paddle.svg";
+
 let paddleWidth = 120;
 let paddleHeight = 10;
 let paddleVelocityX = 44;
@@ -22,6 +25,9 @@ let paddle = {
 };
 
 // ball
+let ballImg = new Image();
+ballImg.src = "assets/ball.svg";
+
 let ballWidth = 10;
 let ballHeight = 10;
 let ballVelocityX = 3;
@@ -36,6 +42,9 @@ let ball = {
 };
 
 // bricks
+let brickImg = new Image();
+brickImg.src = "assets/bricks.svg";
+
 let brickArray = [];
 let brickWidth = 50;
 let brickHeight = 10;
@@ -57,7 +66,7 @@ window.onload = function () {
   context = board.getContext("2d");
 
   //   paddle drawing
-  context.fillStyle = "lightgreen";
+  context.fillStyle = "#d4d4d4";
   context.fillRect(paddle.x, paddle.y, paddleWidth, paddleHeight);
 
   requestAnimationFrame(update);
@@ -80,14 +89,12 @@ function update() {
   context.clearRect(0, 0, board.width, board.height);
 
   //  paddle drawing
-  context.fillStyle = "lightgreen";
-  context.fillRect(paddle.x, paddle.y, paddleWidth, paddleHeight);
+  context.drawImage(paddleImg, paddle.x, paddle.y, paddleWidth, paddleHeight);
 
   //  ball
-  context.fillStyle = "white";
   ball.x += ball.velocityX;
   ball.y += ball.velocityY;
-  context.fillRect(ball.x, ball.y, ball.width, ball.height);
+  context.drawImage(ballImg, ball.x, ball.y, ball.width, ball.height);
 
   //  bounce of the walls
   if (ball.y <= 0) {
@@ -112,7 +119,6 @@ function update() {
   }
 
   // brick drawing
-  context.fillStyle = "skyblue";
   for (let i = 0; i < brickArray.length; i++) {
     let brick = brickArray[i];
     if (!brick.break) {
@@ -127,7 +133,7 @@ function update() {
         brickCount -= 1;
         score += 100;
       }
-      context.fillRect(brick.x, brick.y, brick.width, brick.height);
+      context.drawImage(brickImg, brick.x, brick.y, brick.width, brick.height);
     }
   }
 

@@ -10,15 +10,17 @@
 
 body {
   background-color: black;
+  background-image: url(assets/stars_bg_img.jpg);
   color: white;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #board {
-  margin-top: 2rem;
-  background: #161616;
-  background: linear-gradient(to bottom, #000000, #434343);
-  border: 2px solid cyan;
+  border: 2px solid #d4d4d4;
 }
 
 footer {
